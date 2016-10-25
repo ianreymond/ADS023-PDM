@@ -1,7 +1,9 @@
-package br.com.reymond.lawrence.oqrola;
+package br.com.reymond.lawrence.oqrola.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import br.com.reymond.lawrence.oqrola.R;
 
 public class MainActivity extends AppCompatActivity {
 
