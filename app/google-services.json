@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "815872801890",
+    "firebase_url": "https://oqrola-f5c6a.firebaseio.com",
+    "project_id": "oqrola-f5c6a",
+    "storage_bucket": "oqrola-f5c6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815872801890:android:49d1fbcffb7b2662",
+        "android_client_info": {
+          "package_name": "br.com.reymond.lawrence.oqrola"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815872801890-ao5r5l266362f2pnfbga93qgdj5klfnd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.reymond.lawrence.oqrola",
+            "certificate_hash": "554193AAB52D039E1417C154E7154EE29EF849E0"
+          }
+        },
+        {
+          "client_id": "815872801890-1o8395elp81ec48ta2kadrot8n4fsp4c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2JRwwAnIQP9s5SYPnqxuWNissQsZe7Wk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815872801890-1o8395elp81ec48ta2kadrot8n4fsp4c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

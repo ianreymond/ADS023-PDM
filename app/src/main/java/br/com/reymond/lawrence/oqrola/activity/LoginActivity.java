@@ -1,5 +1,6 @@
 package br.com.reymond.lawrence.oqrola.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
 
         txtUser = (EditText) findViewById(R.id.txtUser);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
+
+
+        //FirebaseApp.initializeApp(Context, FirebaseOptions);
 
         mAuth = FirebaseAuth.getInstance();
 
