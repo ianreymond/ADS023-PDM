@@ -24,6 +24,7 @@ import br.com.reymond.lawrence.oqrola.R;
  * Created by ian on 24-Oct-16.
  */
 
+
 public class LoginActivity extends AppCompatActivity {
     private EditText txtUser;
     private EditText txtPassword;
