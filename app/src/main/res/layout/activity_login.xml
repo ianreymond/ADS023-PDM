@@ -16,7 +16,7 @@
         android:layout_height="150dp"
         android:id="@+id/imageView"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/firebase"
+        android:src="@drawable/log_generico"
         android:layout_marginTop="30dp" />
     <LinearLayout
         android:orientation="vertical"
@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/txtUser"
             android:hint="@string/login_user"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:inputType="textWebEmailAddress" />
 
         <EditText
             android:layout_width="match_parent"
@@ -38,7 +39,8 @@
             android:id="@+id/txtPassword"
             android:hint="@string/login_password"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="50dp"
+            android:inputType="textWebPassword" />
     </LinearLayout>
 
     <Button
@@ -51,4 +53,18 @@
         android:background="@drawable/green_button"
         android:textColor="@drawable/green_button_text"
         android:textSize="30sp" />
+
+
+
+    <Button
+        android:id="@+id/btnSign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in_button"
+        android:textAllCaps="false"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/green_button"
+        android:textColor="@drawable/green_button_text"
+        android:textSize="30sp" />
+
 </LinearLayout>

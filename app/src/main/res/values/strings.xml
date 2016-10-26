@@ -2,9 +2,12 @@
     <string name="app_name">OqRola</string>
 
     <string name="login_button">Entrar</string>
+    <string name="sign_in_button">Registrar</string>
     <string name="login_user">E-mail</string>
     <string name="login_password">Senha</string>
     <string name="error_login">Usuário ou senha inválida</string>
     <string name="error_realtime_get_data">Não foi possível recuperar os dados do banco remoto</string>
+
+    <string name="login_notify">Login Efetuado com Sucesso!</string>
 </resources>
 

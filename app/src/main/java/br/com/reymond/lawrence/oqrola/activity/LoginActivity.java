@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.txtPassword);
 
 
-        //FirebaseApp.initializeApp(Context, FirebaseOptions);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -58,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
                                 } else {
                                     FirebaseUser user = task.getResult().getUser();
                                     if (user != null) {
+                                        Intent i = new Intent(LoginActivity.this,NotifyActivity.class);
+                                        startActivity(i);
                                         Intent it = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(it);
                                         finish();
@@ -67,6 +68,44 @@ public class LoginActivity extends AppCompatActivity {
                         });
             }
         });
+
+        Button btnSign_in = (Button) findViewById(R.id.btnSign_in);
+        btnSign_in.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                mAuth.signInWithEmailAndPassword(txtUser.getText().toString(), txtPassword.getText().toString())
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (!task.isSuccessful()) {
+                                    mAuth.createUserWithEmailAndPassword(txtUser.getText().toString(), txtPassword.getText().toString())
+                                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                    if (!task.isSuccessful()) {
+                                                        Toast.makeText(LoginActivity.this, R.string.error_login, Toast.LENGTH_LONG).show();
+                                                    } else {
+                                                        FirebaseUser user = task.getResult().getUser();
+                                                        if (user != null) {
+                                                            Intent i = new Intent(LoginActivity.this,NotifyActivity.class);
+                                                            startActivity(i);
+                                                            Intent it = new Intent(LoginActivity.this, MainActivity.class);
+                                                            startActivity(it);
+                                                            finish();
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                } else {
+                                    Toast.makeText(LoginActivity.this, R.string.error_login, Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+            }
+
+        });
+
     }
 
     @Override
