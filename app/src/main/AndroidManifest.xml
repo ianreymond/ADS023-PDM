@@ -23,7 +23,7 @@
         <activity android:name=".activity.NotifyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND"/>
-                <action android:name="br.com.reymond.lawrence.oqrola.activity.NotifyActivity" />
+                <action android:name=".activity.NotifyActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 

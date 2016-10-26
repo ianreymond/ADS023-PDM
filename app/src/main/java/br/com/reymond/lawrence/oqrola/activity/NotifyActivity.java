@@ -11,7 +11,7 @@ import br.com.reymond.lawrence.oqrola.R;
 
 public class NotifyActivity extends AppCompatActivity{
 
-    public  static String NOTIFY_ACTIVITY = "br.com.reymond.lawrence.oqrola.NotifyActivity";
+    public  static String NOTIFY_ACTIVITY = "br.com.reymond.lawrence.oqrola.activity.NotifyActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

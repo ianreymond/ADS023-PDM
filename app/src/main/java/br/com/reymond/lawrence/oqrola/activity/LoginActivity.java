@@ -57,10 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                                 } else {
                                     FirebaseUser user = task.getResult().getUser();
                                     if (user != null) {
-                                        Intent i = new Intent(LoginActivity.this,NotifyActivity.class);
-                                        startActivity(i);
                                         Intent it = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(it);
+                                        Intent i = new Intent(LoginActivity.this, NotifyActivity.class);
+                                        startActivity(i);
                                         finish();
                                     }
                                 }
@@ -88,10 +88,10 @@ public class LoginActivity extends AppCompatActivity {
                                                     } else {
                                                         FirebaseUser user = task.getResult().getUser();
                                                         if (user != null) {
-                                                            Intent i = new Intent(LoginActivity.this,NotifyActivity.class);
-                                                            startActivity(i);
                                                             Intent it = new Intent(LoginActivity.this, MainActivity.class);
                                                             startActivity(it);
+                                                            Intent i = new Intent(LoginActivity.this, NotifyActivity.class);
+                                                            startActivity(i);
                                                             finish();
                                                         }
                                                     }
