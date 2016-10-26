@@ -1,10 +1,15 @@
 package br.com.reymond.lawrence.oqrola.activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +22,7 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.RemoteMessage;
 
 import br.com.reymond.lawrence.oqrola.R;
 
@@ -59,8 +65,12 @@ public class LoginActivity extends AppCompatActivity {
                                     if (user != null) {
                                         Intent it = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(it);
-                                        Intent i = new Intent(LoginActivity.this, NotifyActivity.class);
-                                        startActivity(i);
+                                        //Intent i = new Intent(LoginActivity.this, NotifyActivity.class);
+                                        //startActivity(i);
+
+
+
+
                                         finish();
                                     }
                                 }
@@ -90,8 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         if (user != null) {
                                                             Intent it = new Intent(LoginActivity.this, MainActivity.class);
                                                             startActivity(it);
-                                                            Intent i = new Intent(LoginActivity.this, NotifyActivity.class);
-                                                            startActivity(i);
+                                                            createNotification();
                                                             finish();
                                                         }
                                                     }
@@ -118,4 +127,21 @@ public class LoginActivity extends AppCompatActivity {
         super.onStop();
     }
 
+
+    public void createNotification(){
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent ,0);
+
+        Notification newNoti = new Notification.Builder(this)
+                .setContentTitle("Cadastro Realizado")
+                .setContentText("Bem Vindo")
+                .setSmallIcon(R.drawable.cast_ic_notification_small_icon)
+                .build();
+
+        NotificationManager nManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        newNoti.flags |= Notification.FLAG_AUTO_CANCEL;
+        nManager.notify(0,newNoti);
+
+    }
 }
