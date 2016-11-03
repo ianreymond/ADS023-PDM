@@ -137,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                 .setContentTitle("Cadastro Realizado")
                 .setContentText("Bem Vindo")
                 .setSmallIcon(R.drawable.cast_ic_notification_small_icon)
+                .setAutoCancel(true)
                 .build();
 
         NotificationManager nManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
