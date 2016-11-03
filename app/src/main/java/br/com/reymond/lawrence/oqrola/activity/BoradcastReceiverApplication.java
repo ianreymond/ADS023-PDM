@@ -17,4 +17,5 @@ public class BoradcastReceiverApplication extends Application {
     public void setCurrentActivity(Activity act) {
         currentActivity = act;
     }
+
 }
