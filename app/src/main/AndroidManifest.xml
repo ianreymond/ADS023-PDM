@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivityAux">
         </activity>
 
         <activity android:name=".activity.NotifyActivity">
@@ -32,6 +32,10 @@
                 <data android:mimeType="image/*"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".activity.SignUp"/>
+
+        <activity android:name=".activity.MainActivity"/>
 
         <receiver android:name=".activity.EventReceiver" android:exported="false">
             <intent-filter>
