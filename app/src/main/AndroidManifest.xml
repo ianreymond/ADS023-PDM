@@ -34,6 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivityAux"></activity>
+        <activity android:name=".activity.LogoutActivity"></activity>
         <activity android:name=".activity.NotifyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />

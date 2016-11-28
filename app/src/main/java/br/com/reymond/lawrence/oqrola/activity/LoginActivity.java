@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText txtUser;
     private EditText txtPassword;
 
-    private FirebaseAuth mAuth;
+    public static FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     final static String APP_PREFS = "app_prefs";

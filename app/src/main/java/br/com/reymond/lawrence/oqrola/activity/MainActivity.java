@@ -1,5 +1,6 @@
 package br.com.reymond.lawrence.oqrola.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -213,11 +214,25 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         if(id == R.id.action_second_activity){
-            startActivity(new Intent(this, LoginActivity.class));
+            Intent logout = new Intent(this, LogoutActivity.class);
+            startActivityForResult(logout,1);
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                finish();
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }//onActivityResult
 
     public List<Party> getSetPartyList(int qtd){
         String[] nomes = new String[]{"Festa Surreal", "Dudu Bar", "Frans Cafe", "Brownie", "Na Praia", "Nicolandia", "Carreira Kart", "Mostra Cultural", "Cultura", "Resenha"};
