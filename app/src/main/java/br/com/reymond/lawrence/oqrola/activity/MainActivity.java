@@ -1,10 +1,10 @@
 package br.com.reymond.lawrence.oqrola.activity;
 
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -23,7 +24,6 @@ import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import com.mikepenz.materialdrawer.model.interfaces.OnCheckedChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +40,13 @@ import br.com.reymond.lawrence.oqrola.model.Party;
 public class MainActivity extends ActionBarActivity {
 
     private static String TAG = "LOG";
+    private static GoogleMap mMap;
+    private static LocationManager locationManager;
     private Toolbar mToolbar;
     private Drawer.Result navigationDrawerLeft;
     private Drawer.Result navigationDrawerRight;
     private AccountHeader.Result headerNavigationLeft;
     private int mPositionClicked;
-
     /**
      * Opção de Notificações
     */
@@ -67,6 +68,8 @@ public class MainActivity extends ActionBarActivity {
         mToolbar.setSubtitle("A sua Festa e Aqui!");
         mToolbar.setLogo(R.mipmap.ic_launcher);
         setSupportActionBar(mToolbar);
+
+
 
         /**
          * Fragmento
@@ -144,14 +147,14 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l, IDrawerItem iDrawerItem) {
                         for (int count = 0, tam = navigationDrawerLeft.getDrawerItems().size(); count < tam; count++) {
-                            if (count == mPositionClicked && mPositionClicked <= 3) {
+                            if (count == mPositionClicked && mPositionClicked <= 4) {
                                 PrimaryDrawerItem aux = (PrimaryDrawerItem) navigationDrawerLeft.getDrawerItems().get(count);
                                 aux.setIcon(getResources().getDrawable( getCorrectDrawerIcon( count, false ) ));
                                 break;
                             }
                         }
 
-                        if(i <= 3){
+                        if(i <= 4){
                             ((PrimaryDrawerItem) iDrawerItem).setIcon(getResources().getDrawable( getCorrectDrawerIcon( i, true ) ));
                         }
 
@@ -168,11 +171,11 @@ public class MainActivity extends ActionBarActivity {
                 })
                 .build();
 
-        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Quero Festa").withIcon(getResources().getDrawable(R.drawable.querofesta_ativo)));
-        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Hora do Rango").withIcon(getResources().getDrawable(R.drawable.horadorango_ativo)));
-        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Happy Hour").withIcon(getResources().getDrawable(R.drawable.happyhour_ativo)));
-        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Time Cult").withIcon(getResources().getDrawable(R.drawable.timecult_ativo)));
-        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Censura Livre").withIcon(getResources().getDrawable(R.drawable.censuralivre_ativo)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Quero Festa").withIcon(getResources().getDrawable(R.drawable.querofesta_inativo)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Hora do Rango").withIcon(getResources().getDrawable(R.drawable.horadorango_inativo)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Happy Hour").withIcon(getResources().getDrawable(R.drawable.happyhour_inativo)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Time Cult").withIcon(getResources().getDrawable(R.drawable.timecult_inativo)));
+        navigationDrawerLeft.addItem(new PrimaryDrawerItem().withName("Censura Livre").withIcon(getResources().getDrawable(R.drawable.censuralivre_inativo)));
 
         navigationDrawerLeft.addItem(new SectionDrawerItem().withName("Configurações"));
 
@@ -217,10 +220,10 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public List<Party> getSetPartyList(int qtd){
-        String[] nomes = new String[]{"surrealr2", "Bar Dudu", "rango_frans", "rango_brownie", "napraia", "livre_nico", "livre_kart", "cult_mostra", "cul_cultura", "bar_resenha"};
-        String[] produtoras = new String[]{"surrealr2", "Bar Dudu", "rango_frans", "rango_brownie", "napraia", "livre_nico", "livre_kart", "cult_mostra", "cul_cultura", "bar_resenha"};
+        String[] nomes = new String[]{"Festa Surreal", "Dudu Bar", "Frans Cafe", "Brownie", "Na Praia", "Nicolandia", "Carreira Kart", "Mostra Cultural", "Cultura", "Resenha"};
+        String[] produtoras = new String[]{"R2", "Bar", "Frans", "Rango", "R2", "Parque", "Kart", "Governo DF", "Cultura", "Bar"};
         int[] fotos = new int[]{R.drawable.surrealr2, R.drawable.bar_dudu, R.drawable.rango_frans, R.drawable.rango_brownie, R.drawable.napraia, R.drawable.livre_nico, R.drawable.livre_kart, R.drawable.cult_mostra, R.drawable.cul_cultura, R.drawable.bar_resenha};
-        String[] locals = new String[]{"-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318"};
+        String[] locals = new String[]{"-15.699444,-47.8319107", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318", "-15.8035946,-47.8923318"};
         List<Party> listAux = new ArrayList<>();
 
         for(int i = 0; i < qtd; i++){
@@ -229,5 +232,8 @@ public class MainActivity extends ActionBarActivity {
         }
         return(listAux);
     }
+
+
+
 
 }
